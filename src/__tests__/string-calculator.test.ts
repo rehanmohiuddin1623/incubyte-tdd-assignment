@@ -24,3 +24,12 @@ test('handles new lines between numbers', () => {
 test('supports custom delimiter defined at the start of the string', () => {
     expect(add("//;\n1;2")).toBe(3);
 });
+
+
+test('throws an exception for negative numbers', () => {
+    expect(() => add("1,-2,3")).toThrow("negative numbers not allowed: -2");
+});
+
+test('throws an exception listing all negative numbers', () => {
+    expect(() => add("1,-2,-4")).toThrow("negative numbers not allowed: -2,-4");
+});

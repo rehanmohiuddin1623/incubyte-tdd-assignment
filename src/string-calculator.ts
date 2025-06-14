@@ -15,8 +15,12 @@ export const add = (numbers: string) => {
         }
     }
 
-    return numberString
-        .split(delimiter)
-        .map(n => parseInt(n))
-        .reduce((sum, n) => sum + n, 0);
+    const newNumbers = numberString.split(delimiter).map(n => parseInt(n));
+
+    const negativeNumbers = newNumbers.filter(n => n < 0);
+    if (negativeNumbers.length > 0) {
+        throw new Error(`negative numbers not allowed: ${negativeNumbers.join(",")}`);
+    }
+
+    return newNumbers.reduce((sum, n) => sum + n, 0);
 }
