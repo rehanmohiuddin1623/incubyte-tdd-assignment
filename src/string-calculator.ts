@@ -1,5 +1,7 @@
 export const add = (numbers: string) => {
     if (numbers === "") return 0;
 
-    return parseInt(numbers);
+    const parts = numbers.split(",");
+
+    return parts.reduce((sum, num) => sum + parseInt(num), 0);
 }
